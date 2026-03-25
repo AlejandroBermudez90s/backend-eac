@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('ecosistemas_laborales', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignId('modulo_id')->constrained('modulos')->onDelete('cascade');
-
+            $table->foreignId('modulo_id')
+                ->constrained('modulos')
+                ->cascadeOnDelete();
+            $table->string('nombre');
+            $table->string('codigo', 20)->unique();   // Ej: "0614-TBM"
+            $table->text('descripcion')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

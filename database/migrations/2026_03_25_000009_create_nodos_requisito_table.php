@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('nodos_requisito', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('situacion_competencia_id')
+                ->constrained('situaciones_competencia')
+                ->cascadeOnDelete();
+            $table->enum('tipo', ['conocimiento', 'habilidad']);
+            $table->text('descripcion');
+            $table->unsignedSmallInteger('orden')->default(0);
             $table->timestamps();
         });
     }

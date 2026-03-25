@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('resultados_aprendizaje', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('modulo_id')->constrained('modulos')->onDelete('cascade');
-            $table->string('codigo', 50);
-            $table->string('descripcion');
-            $table->float('peso_porcentaje')
-                ->nullable()
-                ->check('peso_porcentaje >= 0 AND peso_porcentaje <= 100');
-            $table->integer('orden')->check('orden >= 1');
+            $table->foreignId('modulo_id')
+                ->constrained('modulos')
+                ->cascadeOnDelete();
+            $table->string('codigo', 5);             // Ej: "RA1", "RA2"
+            $table->text('descripcion');
             $table->timestamps();
+
+            $table->unique(['modulo_id', 'codigo']);
         });
     }
 

@@ -11,12 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('criterios_tareas', function (Blueprint $table) {
+        Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('situacion_competencia_id')->constrained('situaciones_competencia')->onDelete('cascade');
-            $table->foreignId('criterio_evaluacion_id')->constrained('criterios_evaluacion')->onDelete('cascade');
+            $table->foreignId('estudiante_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->foreignId('modulo_id')
+                ->constrained('modulos')
+                ->cascadeOnDelete();
             $table->timestamps();
 
+            $table->unique(['estudiante_id', 'modulo_id']);
         });
     }
 
@@ -25,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('criterios_tareas');
+        Schema::dropIfExists('matriculas');
     }
 };
