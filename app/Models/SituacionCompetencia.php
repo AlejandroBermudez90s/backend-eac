@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SituacionCompetencia extends Model
 {
+    protected $table = 'situaciones_competencia';
+
     protected $fillable = [
         'ecosistema_laboral_id',
         'codigo',

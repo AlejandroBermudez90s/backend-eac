@@ -1,7 +1,18 @@
 <?php
 
 namespace Database\Seeders;
-namespace App\Models;
+use App\Models\FamiliaProfesional;
+use App\Models\CicloFormativo;
+use App\Models\Modulo;
+use App\Models\EcosistemaLaboral;
+use App\Models\ResultadoAprendizaje;
+use App\Models\CriterioEvaluacion;
+use App\Models\SituacionCompetencia;
+use App\Models\NodoRequisito;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Matricula;
+use App\Models\PerfilHabilitacion;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
